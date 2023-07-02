@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+
+<body style="background-color:#8f8f8f">
+
+<style>
+    div1{
+        width: 500px;
+        height: 500px;
+        background-color:rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        font-size: 45px;
+        border-radius: 25px;
+        padding: 20px;
+    }
+</style>
+
+
+
+<body>
+
+    <div1>
+        <button type="randomSong" onclick="randomSong()">Losuj Postać</button>
+        <input name="randomSong" id="randomSong">
+      </div>
+
+<script>
+
+var song = Array("Phoenix", "Brimstone", "Jett", "Sage", "Sova", "Yoru", "Skye", "Astra", "Harbor", "Cypher", "Viper", "Deadlock", "Neon", "Reyna", "Gekko", "Fade", "Chamber", "Breach", "Killjoy", "Raze", "KAY/0", "Omen");
+
+function randomSong() {
+  var randomSong = song[Math.floor(Math.random() * song.length)];
+  document.getElementById('randomSong').value = randomSong;
+}
+</script>
+
+</body>
+</html>
