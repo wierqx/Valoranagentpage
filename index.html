@@ -1,44 +1,93 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <title>Wpisywanie na listę i losowanie</title>
+    <script>
+        var listaElementow = Array();
+
+        function dodajDoListy() {
+            var nowyElement = document.getElementById("nowyElement").value;
+            if (nowyElement !== "") {
+                listaElementow.push(nowyElement);
+                document.getElementById("nowyElement").value = "";
+                aktualizujZawartoscListy();
+            }
+        }
+        function usunZListyall(index) {
+            listaElementow.splice(index);
+            aktualizujZawartoscListy();
+        }
+        function usunZListy1(index,) {
+            listaElementow.splice(index, 1);
+            aktualizujZawartoscListy();
+        }
+
+        function losujElement() {
+            if (listaElementow.length > 0) {
+                var losowyIndex = Math.floor(Math.random() * listaElementow.length);
+                var wylosowanyElement = listaElementow[losowyIndex];
+                document.getElementById("wylosowanyElement").innerHTML = "Wylosowany element: " + wylosowanyElement;
+            } else {
+                document.getElementById("wylosowanyElement").innerHTML = "Lista jest pusta.";
+            }
+        }
+
+        function aktualizujZawartoscListy() {
+            var lista = document.getElementById("listaElementow");
+            lista.innerHTML = "";
+            for (var i = 0; i < listaElementow.length; i++) {
+                var element = listaElementow[i];
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(element));
+                lista.appendChild(li);
+            }
+        }
+
+
+        function dodajvalorant(){
+            listaElementow.push("Astra",
+            "Breach",
+            "Brimstone",
+            "Chamber",
+            "Cypher",
+            "Deadlock",
+            "Fade",
+            "Gekko",
+            "Harbor",
+            "Jett",
+            "KAY/0",
+            "Killjoy",
+            "Neon",
+            "Omen",
+            "Phoenix",
+            "Raze",
+            "Reyna",
+            "Sage",
+            "Skye",
+            "Sova",
+            "Viper",
+            "Yoru")
+            var lista = document.getElementById("listaElementow");
+            lista.innerHTML = "";
+            for (var i = 0; i < listaElementow.length; i++) {
+                var element = listaElementow[i];
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(element));
+                lista.appendChild(li);
+            }
+        }
+    </script>
 </head>
-
-<body style="background-color:#ffffff">
-
-<style>
-    div1{
-        width: 500px;
-        height: 500px;
-        background-color:rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
-        position: absolute;
-        top: 00%;
-        left: 2%;
-        font-size: 45px;
-        border-radius: 25px;
-        padding: 20px;
-    }
-</style>
-
-
-
-
 <body>
-
-  <div1>
-      <button type="randomSong" onclick="randomSong()">Losuj Postać</button>
-      <input name="randomSong" id="randomSong">
-    </div>
-<script>
-
-var song = Array("Phoenix", "Brimstone", "Jett", "Sage", "Sova", "Yoru", "Skye", "Astra", "Harbor", "Cypher", "Viper", "Deadlock", "Neon", "Reyna", "Gekko", "Fade", "Chamber", "Breach", "Killjoy", "Raze", "KAY/0", "Omen");
-
-function randomSong() {
-  var randomSong = song[Math.floor(Math.random() * song.length)];
-  document.getElementById('randomSong').value = randomSong;
-}
-
-
-</script>
-
+    <h1>Wpisywanie na listę i losowanie</h1>
+    <input type="text" id="nowyElement" placeholder="Wpisz element">
+    <button onclick="dodajDoListy()">Dodaj do listy</button>
+    <br><br>
+    <button onclick="losujElement()">Losuj element</button>
+    <p id="wylosowanyElement">Wylosowany element:</p>
+    <ul id="listaElementow">Aktualna zawartość listy:</ul>
+    <button class = "agent" onclick="dodajvalorant()">Dodaj Agentów Valorant</button>
+    <button class = "-all" onclick="usunZListyall()">Usuń zawartość listy</button>
+    <button class = "-1" onclick="usunZListy1()">Usuń jedno</button>
 </body>
 </html>
